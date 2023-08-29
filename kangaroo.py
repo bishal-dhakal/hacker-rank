@@ -19,10 +19,14 @@ import sys
 
 def kangaroo(x1, v1, x2, v2):
     # Write your code here
-    return "YES" if (x1+v1)==(x2+v2) else "NO"
+    if (v1 > v2) and (x2 - x1) % (v2 - v1) == 0:
+        return "YES"
+    else:
+        return "NO"
+    
 
 if __name__ == '__main__':
-    
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     first_multiple_input = input().rstrip().split()
 
@@ -36,4 +40,6 @@ if __name__ == '__main__':
 
     result = kangaroo(x1, v1, x2, v2)
 
-    print(result)
+    fptr.write(result + '\n')
+
+    fptr.close()
